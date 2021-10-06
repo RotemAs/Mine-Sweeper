@@ -1,30 +1,23 @@
+function gameoff() {
+    // gGame.isOn = false
+    console.log('gameoff')
+        // exposeMines()
+    var t0 = crrLavel.SIZE
+    var t1 = (t0 * t0) - crrLavel.MINES
+    var t2 = gGame.hiddenMinsCount
+    console.log('t1', t1, 't2', t2, 't0', t0)
 
-
-function placeMines(){
-    // console.log('gBord[0][2]',gBord[0][2].isShown)
-    
-    gBord[1][1].isMine = true
-    gBord[2][2].isMine = true
-
-    // gBord[1][1].isEmpty = false
-    // gBord[2][2].isEmpty = false
-
-    // gBord[1][1].haveNeighbor = false
-    // gBord[2][2].haveNeighbor = false
-    
-
-
-
-    
-    // if (gBord[0][2].isShown){
-
-    // }
-    // console.log('plceMines gBord',gBord)
-    
 }
-
-// function renderCell(i,j, value) {
-//     // Select the elCell and set the value
-//     var elCell = document.querySelector(`.cell${i}-${j}`);
-//     elCell.innerHTML = value;
-//   }
+// - crrLavel.MINE
+function hintClick() {
+    if (gGame.isHint === false) {
+        gGame.isHint = true
+        document.getElementById('hints').style.backgroundColor = 'rgb(243, 12, 231)';
+        privewBord = gBord
+    } else {
+        gGame.isHint = false
+        document.getElementById('hints').style.backgroundColor = 'rgb(224, 243, 240)'
+    }
+    console.log('ishint', gGame.isHint)
+        //for no life /document.getElementById('hints').style.backgroundColor = 'rgb(158, 158, 149)'
+}

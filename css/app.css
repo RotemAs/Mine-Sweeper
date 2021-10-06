@@ -1,27 +1,24 @@
 body {
-  background: rgb(102, 178, 255);
+    background: rgb(102, 178, 255);
 }
 
 main {
-  max-width: 610px;
-  margin: auto;
+    max-width: 610px;
+    margin: auto;
 }
 
 h1 {
-  text-align: center;
-  color: rgb(255, 255, 153);
+    text-align: center;
+    color: rgb(255, 255, 153);
 }
 
-  
-  .board {
+.board {
     margin: auto;
     border-collapse: collapse;
     border-spacing: 50px;
-    /* background-color: rgb(53, 22, 228) */
-  }
-  
-  
-  .button {
+}
+
+.buttonUp {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -34,35 +31,68 @@ h1 {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-  }
-  
-  .button:hover {background-color: rgb(224, 224, 139)}
-  
-  .button:active {
+    margin: 8px;
+}
+
+.buttonUp:hover {
+    background-color: rgb(224, 224, 139)
+}
+
+.buttonUp:active {
     background-color: rgb(158, 158, 149);
-    
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-  }
-  .cell {
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #666;
+    background-color: rgb(255, 255, 153);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {
+    background-color: rgb(224, 224, 139)
+}
+
+.button:active {
+    background-color: rgb(158, 158, 149);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.cell {
     float: left;
     width: 50px;
     height: 50px;
-    background-image: radial-gradient(#fff,#e6e6e6);
-    /* background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #e6e6e6); */
+    background-image: radial-gradient(#fff, #e6e6e6);
     border: 1px solid black;
-    font-size:50px;
-    text-align:center;
+    font-size: 40px;
+    text-align: center;
     display: table-cell;
-    vertical-align:middle;
+    vertical-align: middle;
     line-height: 50px;
-/* border: black 50px;
-    background-color: rgb(235, 235, 243); */
-  }
-  
-  .celldeth{
+}
+
+.celldeth {
     background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #e6e6e6)
-  }
-  
-  
-  
+}
+
+.smiley {
+    width: auto;
+    height: auto;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+    vertical-align: middle;
+    background-color: rgb(224, 243, 240);
+    /* background-color: rgb(255, 255, 153); */
+}

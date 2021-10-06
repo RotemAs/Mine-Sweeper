@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mine Sweeper</title>
+    <title>Mine Sweeper V3</title>
     <link rel="stylesheet" href="css/app.css">
 </head>
 
 
-  <body onload="initGame()"  >
-    <!-- onkeyup="console.log(gLavel)" -->
+<body onload="initGame()">
+
     <h1>MineSwiper</h1>
-    <h2>Score: <span>0</span></h2>
+    <div style="text-align:center">
+        <button class="buttonUp" id="minesRemain">remain 00</button>
+        <button class="buttonUp" id="gtime">01:00</button>
+        <button class="buttonUp" id="glife">life : N</button>
+        <button class="buttonUp" id="hintsDisply">💡 : 3</button>
+    </div>
+    <div style="text-align:center">
+        <button class="smiley" id="flagButten" onclick="flagButtenOnclick()">🚩</button>
+        <button class="smiley" id="idsmiley" onclick="restartGame()">😃</button>
+        <button class="smiley" id="hints" onclick="hintClick()">💡</button>
+    </div>
     <div class="board-container"></div>
 
 
-    
+    <div style="text-align:center">
+        <button class="button" onclick="lavelOnClick(0)">Beginner</button>
+        <button class="button" onclick="lavelOnClick(1)">Medium</button>
+        <button class="button" onclick="lavelOnClick(2)">Expert</button>
 
-    <!-- <button class="restartBtn" onclick="restartButton()" >play again</button>
-  <div class="gameOverMsg">Victory!</div>
-  <div class="gameOverMsgLost">Lost The Game </div> -->
-  
-  <script src="js/tmp.js"></script>
+        <!-- <button class="button" onclick="gameoff()">off</button> -->
+
+
+    </div>
+
+
+
+
+
+
+    <script src="js/tmp.js"></script>
     <script src="js/general.js"></script>
     <script src="js/utils.js"></script>
-    
+    <script src="js/onclick.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/EXhint.js"></script>
+
 </body>
+<footer>Rotem Aslan EX.</footer>
+
 </html>
