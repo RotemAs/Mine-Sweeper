@@ -1,4 +1,7 @@
+'user strict'
+
 function placeMines(mat) {
+
     if (needRecla === false) {
         for (var i = 0; i < crrLavel.MINES; i++) {
             var dxi = getRandomInt(0, crrLavel.SIZE)
@@ -6,40 +9,45 @@ function placeMines(mat) {
             if (gBord[dxi][dxj].isMine === false) {
                 gBord[dxi][dxj].isMine = true
                 gBord[dxi][dxj].isEmpty = false
-
+                    // console.log('gbord', gBord[dxi][dxj])
             } else {
-                // console.log('dobll random mine ', i, ':', j)
+
+
                 i--
-                console.log('i', i)
+                // console.log('afte duble : i', i, '|| locasion ', dxi, ':', dxj, '\n cunt ')
             }
 
 
             // console.log('TEST100',gBord[dxi][dxj])
             // console.log('placeMines ','locatsion: ',dxi,':',dxj,'crrlavelMINES:',crrLavel.MINES)
-            console.log('mine at :', dxi, ':', dxj)
+            // console.log('mine at :', dxi, ':', dxj)
             remainMinesOnBord()
         }
 
-    } else {
+    } else if (needRecla === true) {
         for (var i = 0; i < crrLavel.MINES; i++) {
-            var dxi = getRandomInt(0, crrLavel.MINES)
-            var dxj = getRandomInt(0, crrLavel.MINES)
-                // console.log(dxj,':',dxi)
-            if (firstLoc[i] === dxi && firstLoc[j] === dxj) {
-                dxi = getRandomInt(0, crrLavel.MINES)
-                dxj = getRandomInt(0, crrLavel.MINES)
-                    // console.log('TEST100',gBord[dxi][dxj])
+            var dxi = getRandomInt(0, crrLavel.SIZE)
+            var dxj = getRandomInt(0, crrLavel.SIZE)
+            if (gBord[dxi][dxj].isMine === false) {
                 gBord[dxi][dxj].isMine = true
                 gBord[dxi][dxj].isEmpty = false
+                console.log('gbord', gBord[dxi][dxj])
             } else {
-                // console.log('TEST100',gBord[dxi][dxj])
-                gBord[dxi][dxj].isMine = true
-                gBord[dxi][dxj].isEmpty = false
+
+                // console.log('befor duble i :', i)
+                // console.log('dobll random mine ', i, ':', j)
+
+                i--
+                console.log('afte duble : i', i, '|| locasion ', dxi, ':', dxj)
             }
+
         }
     }
+
+
 }
 
+// console.log('cell test ', firstLoc[i])
 
 function buildBoard() {
     var board = [];

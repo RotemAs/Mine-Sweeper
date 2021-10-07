@@ -1,3 +1,8 @@
+'user strict'
+//TEST50
+
+// document.body.addEventListener("contextmenu", function(evt) { evt.preventDefault(); return false; });
+
 const MINE = '⚙'
 const Flag = '🚩'
 const EMPTY = ' '
@@ -9,6 +14,7 @@ var privewBord = []
 
 var firstLoc;
 var needRecla = false
+
 
 
 var timer = 0;
@@ -59,8 +65,8 @@ var minesRemaining = 3
 
 // console.log('crrlavel',crrLavel)
 
-
 function initGame() {
+    // console.log('in initgame')
 
     gGame.isOn = true
     gGame.hiddenMinsCount = crrLavel.MINES
@@ -73,11 +79,12 @@ function initGame() {
     setMinesNegsCount(gBord)
     renderBoard(gBord)
     startTimer()
+    needRecla = false
     privewBord = gBord
 
 
-    console.log('after initGame renderBoard', gBord)
-    console.log('privewBord', privewBord)
+    // console.log(' initGame renderBoard', gBord)
+    // console.log('initGame privewBord', privewBord)
 
 }
 

@@ -24,15 +24,15 @@
         <button class="smiley" id="idsmiley" onclick="restartGame()">😃</button>
         <button class="smiley" id="hints" onclick="hintClick()">💡</button>
     </div>
-    <div class="board-container"></div>
+    <div oncontextmenu="event.preventDefault()" class="board-container"></div>
 
 
-    <div style="text-align:center">
+    <div style="text-align:center" oncontextmenu="event.preventDefault()">
         <button class="button" onclick="lavelOnClick(0)">Beginner</button>
         <button class="button" onclick="lavelOnClick(1)">Medium</button>
         <button class="button" onclick="lavelOnClick(2)">Expert</button>
 
-        <!-- <button class="button" onclick="gameoff()">off</button> -->
+        <button class="button" onmouseup="gameoff(event)" id="gameOff">off</button>
 
 
     </div>
