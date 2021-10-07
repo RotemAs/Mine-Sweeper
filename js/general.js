@@ -24,12 +24,14 @@ var gGame = {
         isOn: false,
         shownCount: 0,
         markedCount: 0,
+        MinsCount: 0,
         hiddenMinsCount: 0,
         secsPassed: 0,
-        clickCunt: 0,
         isFlagStat: false,
         isHint: false,
         hintCount: 0,
+        clickCunt: 0,
+        livesCunt: 0,
 
 
     }
@@ -59,8 +61,9 @@ var gLavel = [{
 ]
 
 var crrLavel = gLavel[0]
-    // var minesRemaining = crrLavel.MINES
-var minesRemaining = crrLavel.LIVES
+
+// var minesRemaining = crrLavel.MINES
+// var minesRemaining = 100
 
 
 // console.log('crrlavel',crrLavel)
@@ -70,6 +73,7 @@ function initGame() {
 
     gGame.isOn = true
     gGame.hiddenMinsCount = crrLavel.MINES
+    gGame.livesCunt = crrLavel.LIVES
 
 
     gBord = buildBoard()
@@ -80,6 +84,7 @@ function initGame() {
     renderBoard(gBord)
     startTimer()
     needRecla = false
+    minesRemaining = crrLavel.LIVES
     privewBord = gBord
 
 
@@ -87,13 +92,14 @@ function initGame() {
     // console.log('initGame privewBord', privewBord)
 
 }
+var minesRemaining = 0
 
 function remainMinesOnBord() {
-    var text1 = MINE + '  ' + gGame.markedCount
+    var text1 = MINE + '  ' + gGame.hiddenMinsCount
     buttenId1 = 'minesRemain'
         // console.log('rensTop text' + text + '\n minesRemain :' + buttenId)
     renderTop(buttenId1, text1)
-    var text2 = 'Life : ' + minesRemaining
+    var text2 = 'Life : ' + gGame.livesCunt
     buttenId2 = 'glife'
     renderTop(buttenId2, text2)
 

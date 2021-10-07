@@ -85,24 +85,35 @@ function outHint(mat, rowIdx, colIdx) {
                 continue
             }
             count++
-            // console.log('fahetr:', 'i+j ', i, ':', j, '|| me:', i, ':', j, '\n count ', count)
             // console.log(gBord[i][j])
-            if (gBord[i][j].isMine) {
-                hintLoopColors(i, j, 0)
-                gBord[i][j].cellText = EMPTY
+            if (gBord[i][j].isShown) {
+                if (gBord[i][j].isEmpty) {
 
-            } else if (gBord[i][j].haveNeighbor === true) {
-                hintLoopColors(i, j, 0)
-                gBord[i][j].cellText = EMPTY
+                    gBord[i][j].cellText = EMPTY
+                    hintLoopColors(i, j, 0)
+                }
+                console.log('fahetr:', 'i+j ', i, ':', j, '|| me:', i, ':', j, '\n count ', count)
+            } else {
+                if (gBord[i][j].isMine) {
+                    hintLoopColors(i, j, 0)
+                    gBord[i][j].cellText = EMPTY
 
-            } else if (gBord[i][j].isEmpty) {
-                //when clickd on empty cell 
-                gBord[i][j].cellText = EMPTY
-                hintLoopColors(i, j, 0)
+                } else if (gBord[i][j].haveNeighbor === true) {
+                    hintLoopColors(i, j, 0)
+                    gBord[i][j].cellText = EMPTY
 
+                } else if (gBord[i][j].isEmpty) {
+
+                    gBord[i][j].cellText = EMPTY
+                    hintLoopColors(i, j, 0)
+                }
 
 
             }
+
+
+
+
             // console.log('clickcunt', gGame.clickCunt, '\n firstLoc :', firstLoc)
         }
 

@@ -105,7 +105,7 @@ function emptyCellExpand(mat, rowIdx, colIdx) {
             }
 
 
-            if (mat[i][j].isMine === false && mat[i][j] != mat[rowIdx][colIdx] && gBord[i][j].isShown !== true) {
+            if (mat[i][j].isMine === false && mat[i][j] != mat[rowIdx][colIdx] && gBord[i][j].isShown === false && gBord[i][j].isMarked === false) {
                 // console.log('EMPTY prameters idx', rowIdx, '||', colIdx, '\n i:', i, '||j:', j, 'countTest', countTest)
                 if (gBord[i][j].haveNeighbor) {
                     gBord[i][j].cellBekColor = 'rgb(158, 158, 149)'

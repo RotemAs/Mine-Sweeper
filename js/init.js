@@ -9,6 +9,9 @@ function placeMines(mat) {
             if (gBord[dxi][dxj].isMine === false) {
                 gBord[dxi][dxj].isMine = true
                 gBord[dxi][dxj].isEmpty = false
+
+                gGame.MinsCount++
+
                     // console.log('gbord', gBord[dxi][dxj])
             } else {
 
