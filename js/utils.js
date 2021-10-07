@@ -16,6 +16,7 @@ function getRandomInt(min, max) {
 function lavelOnClick(arryPlace) {
 
     crrLavel = gLavel[arryPlace]
+    minesRemaining = crrLavel.LIVES
     console.log('TEST 100  gLavel[arryPlace]', gLavel[arryPlace])
 
     restartGame()

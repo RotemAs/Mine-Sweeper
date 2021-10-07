@@ -60,7 +60,7 @@ var gLavel = [{
 
 var crrLavel = gLavel[0]
     // var minesRemaining = crrLavel.MINES
-var minesRemaining = 3
+var minesRemaining = crrLavel.LIVES
 
 
 // console.log('crrlavel',crrLavel)
@@ -70,7 +70,7 @@ function initGame() {
 
     gGame.isOn = true
     gGame.hiddenMinsCount = crrLavel.MINES
-    gGame.markedCount = crrLavel.MINES
+
 
     gBord = buildBoard()
     printMat(gBord, '.board-container')

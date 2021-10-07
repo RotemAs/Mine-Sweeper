@@ -68,33 +68,60 @@ function onClickCell(i, j, bEvent) {
                 }
                 // console.log('clickcunt', gGame.clickCunt, '\n firstLoc :', firstLoc)
             } else if (gGame.isFlagStat === true && gBord[i][j].isShown === false) {
-                //if mark flag 
-                if (gBord[i][j].isShown === false && gGame.markedCount > 0 && gBord[i][j].isMarked === false) {
-                    gBord[i][j].isMarked = true
-                    gBord[i][j].cellText = Flag
-                    gGame.markedCount--
-                        console.log('flag PUT:', 'i' + i, 'j' + j, 'gBord[i][j].isMarked', gBord[i][j].isMarked, '\n|| gGame.markedCount', gGame.markedCount)
+                //if mark flag
+
+                if (gGame.markedCount >= crrLavel.MINES) {
+                    //no more flags to go 
+
+                    if (gBord[i][j].isMarked = false && gBord[i][j].isShown === false) {
+                        //if need to del
+                        // putFlgs(i, j, bEvent, true)
+
+                        // checkGameOver()
+                        // renderBoard(gBord)
+                        console.log('NO More Flags :', 'i' + i, 'j' + j, 'gBord[i][j].isMarked', gBord[i][j].isMarked, '\n|| gGame.markedCount', gGame.markedCount)
+                        console.log('no flags opsion ')
+
+                    } else if (gBord[i][j].isMarked = true) {
+                        putFlgs(i, j, bEvent, true)
+                            // console.log('else if check ', 'minesRemaining', minesRemaining, 'markedCount', gGame.markedCount)
+
+                    }
+
+                } else if (gBord[i][j].isMarked === false) {
+                    // console.log('if true test ')
+                    //if can be markd 
+                    putFlgs(i, j, bEvent, true)
+
+                    console.log('onClikGenera  mark flag')
                     checkGameOver()
                     renderBoard(gBord)
                 } else if (gBord[i][j].isMarked = true && gBord[i][j].isShown === false) {
-                    gBord[i][j].isMarked = false
-                    gBord[i][j].cellText = ' '
-                    gGame.markedCount++
-                        console.log('flag DEL:', 'i' + i, 'j' + j, 'cunt flag', gGame.markedCount, '\n|| gGame.markedCount', gGame.markedCount)
+                    //if need to del
+                    putFlgs(i, j, bEvent, true)
+                    console.log('onkclick del. flag ')
 
                     checkGameOver()
                     renderBoard(gBord)
 
-                } else {
-                    putFlgs(i, j, bEvent, true)
                 }
+
+
             }
 
-        } else if (bEvent.button === 2) {
+        } else if (bEvent.button === 2 && gBord[i][j].isShown === false) {
 
-            putFlgs(i, j, bEvent, false)
+            if (gGame.markedCount < crrLavel.MINES) {
+                putFlgs(i, j, bEvent, false)
+                console.log('if true else test ')
+            } else {
+                alert('no more flags ')
+            }
+
+
         }
-    } else if (gGame.hintCount < 3) {
+    } else if (gGame.hintCount < crrLavel.HINTS) {
+
         //hint mode 
         gGame.hintCount++
 
@@ -102,7 +129,7 @@ function onClickCell(i, j, bEvent) {
             // setTimeout((outHint(gBord, i, j)), 10000)
         setTimeout(() => { outHint(gBord, i, j) }, 3000);
 
-        // console.log('is hint mode in if ', gGame.isHint)
+        // console.log('is hint mode in if ', gGame.hintCount, '||  \n crrLavel.HINTS', crrLavel.HINTS)
     }
 
 }
@@ -110,22 +137,25 @@ function onClickCell(i, j, bEvent) {
 function putFlgs(i, j, bEvent, flagStatosReq) {
     if (gGame.isFlagStat === flagStatosReq) {
         //if mark flag 
-        if (gBord[i][j].isShown === false && gGame.markedCount > 0 && gBord[i][j].isMarked === false) {
+        if (gBord[i][j].isMarked === false) {
             gBord[i][j].isMarked = true
             gBord[i][j].cellText = Flag
-            gGame.markedCount--
-                // console.log('flag PUT:', 'i' + i, 'j' + j, 'gBord[i][j].isMarked', gBord[i][j].isMarked, '\n|| gGame.markedCount', gGame.markedCount)
-                checkGameOver()
+            gGame.markedCount++
+                console.log('putFlags flag PUT:', 'i' + i, 'j' + j, 'gBord[i][j].isMarked', gBord[i][j].isMarked, '\n|| gGame.markedCount', gGame.markedCount, '<>?', crrLavel.MINES)
+            checkGameOver()
             renderBoard(gBord)
-        } else if (gBord[i][j].isMarked = true && gBord[i][j].isShown === false) {
+        } else if (gBord[i][j].isMarked = true && gGame.markedCount < crrLavel.MINES) {
+            console.log('if true test 55  mins:', crrLavel.MINES, 'marks: ', gGame.markedCount)
             gBord[i][j].isMarked = false
             gBord[i][j].cellText = ' '
-            gGame.markedCount++
-                // console.log('flag DEL:', 'i' + i, 'j' + j, 'cunt flag', gGame.markedCount, '\n|| gGame.markedCount', gGame.markedCount)
+            gGame.markedCount--
+                console.log('putFlgs flag DEL:', 'i' + i, 'j' + j, 'cunt flag', gGame.markedCount, '\n|| gGame.markedCount', gGame.markedCount, '<>?', crrLavel.MINES)
 
-                checkGameOver()
+            checkGameOver()
             renderBoard(gBord)
 
+        } else {
+            alert('no more flags ')
         }
     }
 }
@@ -221,7 +251,7 @@ function restartGame() {
     TestCunt = 0
     firstLoc = null
     needRecla = false
-    minesRemaining = 3
+    minesRemaining = crrLavel.LIVES
     gGame.isOn = false
     gGame.shownCount = 0
     gGame.markedCount = 0,

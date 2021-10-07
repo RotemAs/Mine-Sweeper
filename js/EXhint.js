@@ -13,7 +13,7 @@ function hintLoop(mat, rowIdx, colIdx) {
             }
             count++
             // console.log('fahetr:', 'i+j ', i, ':', j, '|| me:', i, ':', j, '\n count ', count)
-            console.log(gBord[i][j])
+            // console.log(gBord[i][j])
             if (gBord[i][j].isMine) {
                 hintLoopColors(i, j, 1)
                 gBord[i][j].cellText = MINE
@@ -46,22 +46,25 @@ function hintLoopColors(i, j, openClose) {
         } else if (openClose === 0) {
             gBord[i][j].cellBekColor = 'white'
         }
-        console.log('hint loop colors if -')
+        // console.log('hint loop colors if -')
     }
 }
 
 function hintClick() {
-    if (gGame.isHint === false && gGame.hintCount < 3) {
+    if (gGame.isHint === false && gGame.hintCount < crrLavel.HINTS) {
         gGame.isHint = true
         document.getElementById('hints').style.backgroundColor = 'rgb(243, 12, 231)';
         privewBord = gBord
 
+    } else if (gGame.isHint === false) {
+        console.log('you have no more hints')
+        alert('you have no more hints')
     } else {
         gGame.isHint = false
         document.getElementById('hints').style.backgroundColor = 'rgb(224, 243, 240)'
     }
-    console.log('ishint', gGame.isHint)
-        //for no life /document.getElementById('hints').style.backgroundColor = 'rgb(158, 158, 149)'
+    // console.log('ishint', gGame.isHint)
+    //for no life /document.getElementById('hints').style.backgroundColor = 'rgb(158, 158, 149)'
 }
 
 // onClickCell(i, j, bEvent)
@@ -69,10 +72,10 @@ function hintClick() {
 
 
 function outHint(mat, rowIdx, colIdx) {
-    console.log('in outHint')
-        // console.log('befor cenges \n', 'gBord', gBord, '\n', 'privewBord', privewBord)
-        // gBord = privewBord
-        // console.log('after cenges \n', 'gBord', gBord, '\n', 'privewBord', privewBord)
+    // console.log('in outHint')
+    // console.log('befor cenges \n', 'gBord', gBord, '\n', 'privewBord', privewBord)
+    // gBord = privewBord
+    // console.log('after cenges \n', 'gBord', gBord, '\n', 'privewBord', privewBord)
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         if (i < 0 || i > mat.length - 1) {
             continue
@@ -112,5 +115,5 @@ function outHint(mat, rowIdx, colIdx) {
     document.getElementById('hints').style.backgroundColor = 'rgb(224, 243, 240)'
 
     renderBoard(gBord)
-    console.log('hint cuont :', gGame.hintCount)
+        // console.log('hint cuont :', gGame.hintCount)
 }
