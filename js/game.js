@@ -50,10 +50,7 @@ function scoreCheck() {
 
 function localstoregHandell(score) {
     if (localStorage.score < score || localStorage.length === 0) {
-        console.log('new record ', score)
         localStorage.setItem("score", score);
-
-        console.log(localStorage)
     }
 }
 
@@ -69,18 +66,17 @@ function placeMines(mat) {
 
                 gGame.MinsCount++
 
-                    // console.log('gbord', gBord[dxi][dxj])
+
             } else {
 
 
                 i--
-                // console.log('afte duble : i', i, '|| locasion ', dxi, ':', dxj, '\n cunt ')
+
             }
 
 
-            // console.log('TEST100',gBord[dxi][dxj])
-            // console.log('placeMines ','locatsion: ',dxi,':',dxj,'crrlavelMINES:',crrLavel.MINES)
-            console.log('mine at :', dxi, ':', dxj)
+
+
             remainMinesOnBord()
         }
 
@@ -91,7 +87,6 @@ function placeMines(mat) {
             if (gBord[dxi][dxj].isMine === false) {
                 gBord[dxi][dxj].isMine = true
                 gBord[dxi][dxj].isEmpty = false
-                console.log('gbord', gBord[dxi][dxj])
             } else {
                 i--
             }

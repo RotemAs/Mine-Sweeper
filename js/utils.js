@@ -9,17 +9,12 @@ function lavelOnClick(arryPlace) {
 
     crrLavel = gLavel[arryPlace]
     minesRemaining = crrLavel.LIVES
-        // console.log('TEST 100  gLavel[arryPlace]', gLavel[arryPlace])
-
     restartGame()
-
-
 }
 
 function scoreBarUpdate() {
     var highScore = localStorage.getItem('score')
     if (typeof highScore !== 'undefined' && highScore !== null) {
-        // console.log('highScore', highScore)
         var el = document.querySelector("#highScoreBordId")
         el.innerHTML = 'higest score :' + highScore + '  (markd mines)'
     } else {
@@ -35,38 +30,26 @@ function messageSelect(messageNum) {
         if (gMessages[i].messageID === messageNum) {
             arrPlace = i
         }
-
     }
-
     var el = document.querySelector(".messageBar")
     el.innerHTML = gMessages[arrPlace].messageBudy
     el.style.backgroundColor = gMessages[arrPlace].backgroundColor
-
 }
 
 function renderBoard(board) {
-
     var strHTML = '<table border="5" id="printmet" align="center" ><tbody>';
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>';
         for (var j = 0; j < board[0].length; j++) {
-
             var className = 'cell cell' + i + '-' + j;
-
             strHTML += '<td class="' + className + '" id = "' + board[i][j].cellID + '" oncontextmenu="event.preventDefault();"' +
                 '"  onmouseup="onClickCell(' + i + ',' + j + ',event)" " style="background:' + board[i][j].cellBekColor + ';color:' + board[i][j].cellTextColor + ' " >' + gBord[i][j].cellText + ' </td>';
-
-
         }
         strHTML += '</tr>';
     }
-
-
     strHTML += '</tbody></table>';
     var elContainer = document.querySelector('.board-container');
     elContainer.innerHTML = strHTML;
-    //  console.log('strHTML',strHTML)
-
 }
 
 var stopwatchTimer = document.getElementById('gtime');
@@ -105,7 +88,6 @@ function timerCycle() {
         }
 
         stopwatchTimer.innerHTML = hr + ':' + min + ':' + sec;
-        // console.log(sec, ':', min, ':', hr)
         setTimeout("timerCycle()", 1000);
     }
 }
