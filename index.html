@@ -14,42 +14,62 @@
 
     <h1>MineSwiper</h1>
     <div style="text-align:center">
-        <button class="buttonUp" id="minesRemain">remain 00</button>
-        <button class="buttonUp" id="gtime">01:00</button>
-        <button class="buttonUp" id="glife">life : N</button>
-        <button class="buttonUp" id="hintsDisply">💡 : 3</button>
+        <button class="button " id="minesRemain">remain 00</button>
+        <button class="button " id="gtime">01:00</button>
+        <button class="button " id="glife">life : N</button>
+    </div>
+
+
+    <div style="text-align:center">
+        <button class="button " id="hintsDisply">💡 : 3</button>
+        <button class="button " onclick="safeClick()" id="safeClick">safe Click</button>
+        <!-- <button class="buttonUp" onclick="backForUndo()" id="undo">undo</button> -->
+
+
     </div>
     <div style="text-align:center">
         <button class="smiley" id="flagButten" onclick="flagButtenOnclick()">🚩</button>
         <button class="smiley" id="idsmiley" onclick="restartGame()">😃</button>
         <button class="smiley" id="hints" onclick="hintClick()">💡</button>
     </div>
+
+    <div class="messageBar">
+        lets play
+    </div>
     <div oncontextmenu="event.preventDefault()" class="board-container"></div>
 
 
-    <div style="text-align:center" oncontextmenu="event.preventDefault()">
-        <button class="button" onclick="lavelOnClick(0)">Beginner</button>
-        <button class="button" onclick="lavelOnClick(1)">Medium</button>
-        <button class="button" onclick="lavelOnClick(2)">Expert</button>
 
-        <!-- <button class="button" onmouseup="gameoff(event)" id="gameOff">off</button> -->
+    <div style="text-align:center">
+        <button class="button " onclick="lavelOnClick(0) ">Beginner</button>
+        <button class="button " onclick="lavelOnClick(1) ">Medium</button>
+        <button class="button " onclick="lavelOnClick(2) ">Expert</button>
+        <!-- <button class="button " onclick="">7 BOOM </button> -->
+
 
 
     </div>
 
+    <div style="text-align:center">
+        <button class="button " onmouseup="offtmp(event) " id="gameOff ">off</button>
+        <button class="button " id="scorBord">score :?</button>
+
+        <!-- <button class="button " onclick="clearLocalStorege() " id="gameOff ">clear loacl storage</button> -->
+
+    </div>
+    <div class="highScoreBord" id="highScoreBordId">higest score :9 (markd mines)</div>
 
 
 
+    <script src="js/game.js "></script>
+    <script src="js/global.js "></script>
+    <script src="js/onClick.js "></script>
+    <script src="js/onclick.js "></script>
+    <script src="js/utils.js "></script>
+    <script src="js/tmp.js "></script>
 
-
-    <script src="js/tmp.js"></script>
-    <script src="js/general.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/onclick.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/EXhint.js"></script>
 
 </body>
-<footer>Rotem Aslan EX.</footer>
+<footer style="text-align:center"> created by Rotem Aslan </footer>
 
 </html>

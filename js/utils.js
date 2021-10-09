@@ -1,34 +1,73 @@
 'user strict'
 
-// console.log('randominttest',getRandomInt(0,50))
-
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
 
-
-//   function endGame() {
-//     gGame.isOn = false
-//     // console.log('endGame|gGame.isOn',gGame.isOn)
-//   }
-
 function lavelOnClick(arryPlace) {
 
     crrLavel = gLavel[arryPlace]
     minesRemaining = crrLavel.LIVES
-    console.log('TEST 100  gLavel[arryPlace]', gLavel[arryPlace])
+        // console.log('TEST 100  gLavel[arryPlace]', gLavel[arryPlace])
 
     restartGame()
 
 
 }
 
+function scoreBarUpdate() {
+    var highScore = localStorage.getItem('score')
+    if (typeof highScore !== 'undefined' && highScore !== null) {
+        // console.log('highScore', highScore)
+        var el = document.querySelector("#highScoreBordId")
+        el.innerHTML = 'higest score :' + highScore + '  (markd mines)'
+    } else {
+        hide("#highScoreBordId")
+    }
 
-function renderTop(buttenId, text) {
-    document.getElementById(buttenId).innerText = text
 }
 
+
+function messageSelect(messageNum) {
+    var arrPlace;
+    for (var i = 0; i < gMessages.length; i++) {
+        if (gMessages[i].messageID === messageNum) {
+            arrPlace = i
+        }
+
+    }
+
+    var el = document.querySelector(".messageBar")
+    el.innerHTML = gMessages[arrPlace].messageBudy
+    el.style.backgroundColor = gMessages[arrPlace].backgroundColor
+
+}
+
+function renderBoard(board) {
+
+    var strHTML = '<table border="5" id="printmet" align="center" ><tbody>';
+    for (var i = 0; i < board.length; i++) {
+        strHTML += '<tr>';
+        for (var j = 0; j < board[0].length; j++) {
+
+            var className = 'cell cell' + i + '-' + j;
+
+            strHTML += '<td class="' + className + '" id = "' + board[i][j].cellID + '" oncontextmenu="event.preventDefault();"' +
+                '"  onmouseup="onClickCell(' + i + ',' + j + ',event)" " style="background:' + board[i][j].cellBekColor + ';color:' + board[i][j].cellTextColor + ' " >' + gBord[i][j].cellText + ' </td>';
+
+
+        }
+        strHTML += '</tr>';
+    }
+
+
+    strHTML += '</tbody></table>';
+    var elContainer = document.querySelector('.board-container');
+    elContainer.innerHTML = strHTML;
+    //  console.log('strHTML',strHTML)
+
+}
 
 var stopwatchTimer = document.getElementById('gtime');
 var hr = 0;
@@ -93,53 +132,15 @@ function stopTimer() {
     }
 }
 
-function emptyCellExpand(mat, rowIdx, colIdx) {
-    countTest = 0
-    for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
-        if (i < 0 || i > mat.length - 1) {
-            continue
-        }
-        for (var j = colIdx - 1; j <= colIdx + 1; j++) {
-            if (j < 0 || j > mat[0].length - 1) {
-                continue
-            }
 
-
-            if (mat[i][j].isMine === false && mat[i][j] != mat[rowIdx][colIdx] && gBord[i][j].isShown === false && gBord[i][j].isMarked === false) {
-                // console.log('EMPTY prameters idx', rowIdx, '||', colIdx, '\n i:', i, '||j:', j, 'countTest', countTest)
-                if (gBord[i][j].haveNeighbor) {
-                    gBord[i][j].cellBekColor = 'rgb(158, 158, 149)'
-                    gBord[i][j].cellText = gBord[i][j].minesAroundCount
-                    gBord[i][j].isShown = true
-                    gGame.shownCount++
-
-
-                } else if (gBord[i][j].isEmpty && gBord[i][j].isShown !== true) {
-                    gBord[i][j].cellBekColor = 'rgb(158, 158, 149)'
-                    gBord[i][j].isShown = true
-                    gGame.shownCount++
-
-                }
-
-
-
-                countTest++
-            }
-        }
-    }
-
-
+function hide(selector) {
+    document.querySelector(selector).classList.add('hide')
 }
 
-function firstIsMine(i, j, bEvent) {
-    firstLoc = {
-        fi: i,
-        fj: j
-    }
-    needRecla = true
-    gBord[i][j].isMine = false
-    initGame()
-    onClickCell(i, j, bEvent)
-        // console.log('TEST100', 'needRecla', needRecla)
+function show(selector) {
+    document.querySelector(selector).classList.remove('hide')
+}
 
+function clearLocalStorege() {
+    window.localStorage.clear();
 }

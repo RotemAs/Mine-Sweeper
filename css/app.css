@@ -18,7 +18,7 @@ h1 {
     border-spacing: 50px;
 }
 
-.buttonUp {
+.button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -44,7 +44,8 @@ h1 {
     transform: translateY(4px);
 }
 
-.button {
+
+/* .button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -57,7 +58,7 @@ h1 {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-}
+} */
 
 .button:hover {
     background-color: rgb(224, 224, 139)
@@ -95,4 +96,32 @@ h1 {
     vertical-align: middle;
     background-color: rgb(224, 243, 240);
     /* background-color: rgb(255, 255, 153); */
+}
+
+.messageBar {
+    height: auto;
+    font-size: 30px;
+    vertical-align: middle;
+    background-color: #666;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.hide {
+    display: none;
+}
+
+.highScoreBord {
+    height: auto;
+    font-size: 30px;
+    vertical-align: middle;
+    background-color: #666;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    padding: 10px;
 }
